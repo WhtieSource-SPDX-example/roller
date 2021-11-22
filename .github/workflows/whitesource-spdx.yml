@@ -44,4 +44,4 @@ jobs:
             pip install ws_sbom_generator
             echo === Installing SPDX tools =====
             pip install spdx_tools-0.7.0a3_ws-py3-none-any.whl
-            sbom_generator -u $USERKEY -k $APIKEY -s $WS_PROJECTTOKEN -a $WS_URL -t tv -o ./whitesource
+            sbom_generator -u ${{secrets.USERKEY}} -k {{secrets.$APIKEY}} -s $WS_PROJECTTOKEN -a $WS_URL -t tv -o ./whitesource
