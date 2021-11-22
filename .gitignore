@@ -29,3 +29,6 @@ docker/postgresql-data
 docker/roller-data
 assembly-release/release.sh
 it-selenium/overlays/
+.vscode/settings.json
+.vscode/diff/vulsCount.txt
+app/.factorypath
