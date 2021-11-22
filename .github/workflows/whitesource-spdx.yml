@@ -38,7 +38,9 @@ jobs:
       - name: WhiteSource SPDX Report
         run: |
             export WS_PROJECTTOKEN=$(jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json)
+            echo WS_PROJECTTOKEN: $WS_PROJECTOKEN
             export WS_URL=$(echo $WS_WSS_URL | awk -F "agent" '{print $1}')
+            echo WS_URL: $WS_URL
             curl -LRO https://github.com/whitesource-ps/ws-sbom-generator/raw/master/spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Installing WhiteSource SBOM Generator ===
             pip install ws_sbom_generator
