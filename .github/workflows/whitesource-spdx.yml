@@ -36,7 +36,8 @@ jobs:
           java -jar wss-unified-agent.jar -d ./
 
       - name: WhiteSource SPDX Report
-        WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
+        env:
+          WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         run: |
             jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json
             export WS_PROJECTTOKEN=$(jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json)
