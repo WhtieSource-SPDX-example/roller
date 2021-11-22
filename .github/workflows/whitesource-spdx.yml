@@ -36,7 +36,9 @@ jobs:
           java -jar wss-unified-agent.jar -d ./
 
       - name: WhiteSource SPDX Report
+        WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         run: |
+            jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json
             export WS_PROJECTTOKEN=$(jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json)
             echo WS_PROJECTTOKEN: $WS_PROJECTOKEN
             export WS_URL=$(echo $WS_WSS_URL | awk -F "agent" '{print $1}')
@@ -44,6 +46,7 @@ jobs:
             curl -LRO https://github.com/whitesource-ps/ws-sbom-generator/raw/master/spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Installing WhiteSource SBOM Generator ===
             pip install ws_sbom_generator
-            echo === Installing SPDX tools =====
+            echo === Installing SPDX tools ====
             pip install spdx_tools-0.7.0a3_ws-py3-none-any.whl
+            echo === Generating SBOM ===
             sbom_generator -u ${{secrets.USERKEY}} -k {{secrets.$APIKEY}} -s $WS_PROJECTTOKEN -a $WS_URL -t tv -o ./whitesource
