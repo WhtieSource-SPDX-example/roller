@@ -2,6 +2,7 @@ name: WhiteSource scan and SPDX report
 
 on:
   push:
+    branches: []
 
 jobs:
   build:
