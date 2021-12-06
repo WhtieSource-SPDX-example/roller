@@ -46,8 +46,8 @@ jobs:
             curl -LRO https://github.com/whitesource-ps/ws-sbom-generator/raw/master/spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Installing WhiteSource SBOM Generator ===
             pip install ws_sbom_generator
-            echo === Installing SPDX tools ====
-            pip install spdx_tools-0.7.0a3_ws-py3-none-any.whl
+            # echo === Installing SPDX tools ====
+            # pip install spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Generating SBOM ===
             sbom_generator -u ${{secrets.USERKEY}} -k ${{secrets.APIKEY}} -s $WS_PROJECTTOKEN -a $WS_URL -t tv -o ./whitesource-spdx
 
