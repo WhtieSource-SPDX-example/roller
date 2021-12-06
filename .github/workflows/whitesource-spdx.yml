@@ -49,7 +49,7 @@ jobs:
             # echo === Installing SPDX tools ====
             # pip install spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Generating SBOM ===
-            sbom_generator -u ${{secrets.USERKEY}} -k ${{secrets.APIKEY}} -s $WS_PROJECTTOKEN -a $WS_URL -t tv -o ./whitesource-spdx
+            ws_sbom_generator -u ${{secrets.USERKEY}} -k ${{secrets.APIKEY}} -s $WS_PROJECTTOKEN -a $WS_URL -t tv -o ./whitesource-spdx
 
       - name: Publish WhiteSource SPDX Report
         uses: actions/upload-artifact@master
