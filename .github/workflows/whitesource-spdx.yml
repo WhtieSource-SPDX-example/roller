@@ -45,7 +45,7 @@ jobs:
             echo WS_URL: $WS_URL
             #curl -LRO https://github.com/whitesource-ps/ws-sbom-generator/raw/master/spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Installing WhiteSource SBOM Generator ===
-            pip install ws_sbom_generator
+            pip install ws-sbom-generator
             # echo === Installing SPDX tools ====
             # pip install spdx_tools-0.7.0a3_ws-py3-none-any.whl
             echo === Generating SBOM ===
